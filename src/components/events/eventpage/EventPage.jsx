@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { db } from '../../../firebaseConfig';
 import { doc, getDoc } from 'firebase/firestore';
 import './eventpage.css';
-import Navbar from '../../../../../NailSociety/src/components/Navbar';
+import Navbar from '../../../Navbar';
 
 function EventPage() {
   const { id } = useParams();
