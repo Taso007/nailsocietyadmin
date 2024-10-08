@@ -1,0 +1,63 @@
+.eventscard-container {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%; 
+  max-width: 420px; 
+  height : 650px; 
+  height: 100%;
+}
+ 
+.eventscard-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.eventscard-content > div {
+  margin-bottom: 10px;
+}
+
+.eventscard-img {
+  max-height: 190px;
+  max-width: 100%; 
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.eventscardDelete-but {
+  padding: 10px 15px;
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  width: 200px;
+}
+
+.eventscardDelete-but:hover {
+  background-color: #c82333;
+}
+
+.eventsCardReadMore-but {
+  padding: 10px 15px;
+  background-color: #6a6d81;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  width: 200px;
+  margin-bottom: 2%
+}
+
+.eventsCardReadMore-but:hover {
+  background-color: #41494d;
+}
+

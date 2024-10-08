@@ -1,0 +1,22 @@
+.leaflets-container {
+  gap: 3rem;
+  margin-top: 6rem;
+}
+
+.addLeaflet-but {
+  width: 300px;
+  height: 40px;
+  margin-top: 15px;
+  border: none;
+  background-color: rgb(47, 146, 47);
+  color: white;
+  border-radius: 10px;
+}
+
+.addLeaflet-but:hover{
+  background-color: rgb(36, 124, 36);
+} 
+
+.category-leaflet-title {
+  margin-left: 1rem;
+}

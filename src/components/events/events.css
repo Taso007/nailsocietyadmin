@@ -1,0 +1,27 @@
+.category-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.addEvent-but {
+  width: 300px;
+  height: 40px;
+  margin-top: 15px;
+  border: none;
+  background-color: rgb(47, 146, 47);
+  color: white;
+  border-radius: 10px;
+  transition: background-color 0.3s;
+}
+
+.addEvent-but:hover{
+  background-color: rgb(36, 124, 36);
+}
+
+.events-container {
+  margin-top: 6rem;
+}
+
+.category-container {
+  background-color: grey;
+}

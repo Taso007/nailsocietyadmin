@@ -1,0 +1,70 @@
+
+.auth-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.auth-container {
+  width: 500px;
+  padding: 50px;
+  border-radius: 10px;
+  background-color: #ececec;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+} 
+
+.auth-container h1 {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 24px;
+  color: #000000;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.login-label {
+  font-weight: bold;
+  color: #555;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="file"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="file"]:focus {
+  border-color: #007bff;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-center {
+  text-align: center;
+  color: #2e2b2b;
+}
+
+.login-but {
+  width: 100%;
+}

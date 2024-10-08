@@ -1,0 +1,18 @@
+.addblogs-but {
+  width: 300px;
+  height: 40px;
+  margin-top: 15px;
+  border: none;
+  background-color: rgb(47, 146, 47);
+  color: white;
+  border-radius: 10px;
+  transition: background-color 0.3s;
+}
+
+.addblogs-but:hover{
+  background-color: rgb(36, 124, 36);
+}
+
+.blogs-container {
+  margin-top: 6rem;
+}
