@@ -25,12 +25,6 @@
   max-width: 600px;
 }
 
-.event-image {
-  max-width: 600px;
-  height: auto;
-  border-radius: 8px;
-}
-
 .event-location,
 .event-date {
   font-size: 15px;
@@ -54,8 +48,4 @@
     padding: 10px;
   }
 
-  .event-image {
-    width: 100%;
-    max-width: none; 
-  }
 }

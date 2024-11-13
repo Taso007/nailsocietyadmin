@@ -4,6 +4,7 @@ import { db } from '../../../firebaseConfig';
 import { doc, getDoc } from 'firebase/firestore';
 import './eventpage.css';
 import Navbar from '../../../Navbar';
+import Carousel from './carousel/Carousel';
 
 function EventPage() {
   const { id } = useParams();
@@ -46,7 +47,11 @@ function EventPage() {
       </div>
     </div>
     <div className='event-header'>
-      <img src={event.file} alt={event.title_eng} className='event-image' />
+      {event.file.length === 0 ? (
+        <img src={event.file[0]} alt="carousel-img" />
+      ) : (
+        <Carousel imageArray={event.file} />
+      )}
     </div>
     </div>   
     </>

@@ -24,7 +24,7 @@ function EventsPopUp({ formData, handleChange, handleSubmit, handleClosePopup })
               <option value="">Select a category / აირჩიეთ კატეგორია</option>
               <option value="Congress / კონგრესი">Congress / კონგრესი</option>
               <option value="symposium / სიმპოზიუმი">symposium / სიმპოზიუმი</option>
-            </select>
+            </select> 
           </div>
           </div>
           <div>
@@ -35,6 +35,7 @@ function EventsPopUp({ formData, handleChange, handleSubmit, handleClosePopup })
               name="file" 
               onChange={handleChange}
               accept="image/*"  
+              multiple
               required 
               className='addInput fileInput'
             /> 
