@@ -1,14 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './eventscard.css';
 import { useNavigate } from 'react-router-dom';
 import { getFirstNCharacters } from '../../../reusable/utils';
+import DeletePopUp from '../../../reusable/delete/DeletePopUp';
 
 function EventsCard({ id, category, title_eng, title_geo, location_eng, location_geo, date, file, description_eng, description_geo, handleDelete }) {
   const navigate = useNavigate();
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
  
   const handleClick = () => {
     navigate(`/event/${id}`);
   };
+
+
   
   return (
     <div className='eventscard-container'>
@@ -36,11 +40,12 @@ function EventsCard({ id, category, title_eng, title_geo, location_eng, location
           <button  onClick={handleClick} className='eventsCardReadMore-but'>
             Read more
           </button>
-          <button onClick={() => handleDelete(id)} className='eventscardDelete-but'>
+          <button onClick={() => setIsPopupOpen(true)} className='eventscardDelete-but'>
             Delete
           </button>
         </div>
       </div>
+      {isPopupOpen && <DeletePopUp handleDelete={() => {handleDelete(id)}} onClose={() => setIsPopupOpen(false)} />}
     </div>
   ); 
 }

@@ -49,19 +49,17 @@ function Events() {
     try {
       const uploadedFilesURLs = [];
   
-      // Loop through each file in formData.file and upload it
       for (let file of formData.file) {
         const storageRef = ref(storage, `events/${file.name}`);
         await uploadBytes(storageRef, file);
         const fileURL = await getDownloadURL(storageRef);
-        uploadedFilesURLs.push(fileURL); // Store the uploaded file URL
+        uploadedFilesURLs.push(fileURL); 
       }
   
-      // Add the event to Firestore with the list of image URLs
       await addDoc(collection(db, 'events'), {
         category: formData.category,
         date: formData.date,
-        file: uploadedFilesURLs, // Store the list of file URLs
+        file: uploadedFilesURLs, 
         title_eng: formData.title_eng,
         title_geo: formData.title_geo,
         location_eng: formData.location_eng,

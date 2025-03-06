@@ -1,7 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './reportcard.css';
-
+import DeletePopUp from '../../../../reusable/delete/DeletePopUp';
+ 
 function ReportCard({ id, title_eng, title_geo, file_eng, file_geo, handleDelete }) {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
   return (
     <div className='reportcard-container'>
       <div className='reportcard-content'>
@@ -21,10 +24,11 @@ function ReportCard({ id, title_eng, title_geo, file_eng, file_geo, handleDelete
             <a href={file_geo} target="_blank" rel="noopener noreferrer">ნახე ფაილი</a>
           </div>
         </div>
-        <button onClick={() => handleDelete(id)} className='reportcardDelete-but'>
+        <button onClick={() => setIsPopupOpen(true)} className='reportcardDelete-but'>
           Delete
         </button>
       </div>
+      {isPopupOpen && <DeletePopUp handleDelete={() => {handleDelete(id)}} onClose={() => setIsPopupOpen(false)} />}
     </div>
   ); 
 }

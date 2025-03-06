@@ -1,15 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './blogscard.css';
 import { useNavigate } from 'react-router-dom';
 import { getFirstNCharacters } from '../../../reusable/utils';
+import DeletePopUp from '../../../reusable/delete/DeletePopUp';
 
 function BlogsCard({ id, title_eng, title_geo, file, description_eng, description_geo, handleDelete }) {
   const navigate = useNavigate();
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const handleClick = () => {
     navigate(`/blog/${id}`);
   };
-
+ 
   return (
     <div className='blogscard-container'>
       <div className='blogscard-content'>
@@ -28,11 +30,12 @@ function BlogsCard({ id, title_eng, title_geo, file, description_eng, descriptio
           <button onClick={handleClick} className='blogsCardReadMore-but '>
             Read more
           </button>
-          <button onClick={() => handleDelete(id)} className='blogscardDelete-but '>
+          <button onClick={() => setIsPopupOpen(true)} className='blogscardDelete-but '>
             Delete
           </button>
         </div>
       </div>
+      {isPopupOpen && <DeletePopUp handleDelete={() => {handleDelete(id)}} onClose={() => setIsPopupOpen(false)} />}
     </div>
   ); 
 }

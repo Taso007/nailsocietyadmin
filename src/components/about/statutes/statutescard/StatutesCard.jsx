@@ -1,7 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './statutescard.css';
-
+import DeletePopUp from '../../../../reusable/delete/DeletePopUp';
+ 
 function StatutesCard({ id, title_eng, title_geo, file_eng, file_geo, handleDelete }) {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
   return (
     <div className='statutescard-container'>
       <div className='statutescard-content'>
@@ -21,10 +24,11 @@ function StatutesCard({ id, title_eng, title_geo, file_eng, file_geo, handleDele
             <a href={file_geo} target="_blank" rel="noopener noreferrer">ნახე ფაილი</a>
           </div>
         </div>
-        <button onClick={() => handleDelete(id)} className='statutescardDelete-but'>
+        <button onClick={() => setIsPopupOpen(true)}className='statutescardDelete-but'>
           Delete
         </button>
       </div>
+      {isPopupOpen && <DeletePopUp handleDelete={() => {handleDelete(id)}} onClose={() => setIsPopupOpen(false)} />}
     </div>
   ); 
 }
