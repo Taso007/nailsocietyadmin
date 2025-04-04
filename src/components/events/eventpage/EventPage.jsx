@@ -47,8 +47,8 @@ function EventPage() {
       </div>
     </div>
     <div className='event-header'>
-      {event.file.length === 0 ? (
-        <img src={event.file[0]} alt="carousel-img" />
+      {event.file.length === 1 ? (
+        <img src={event.file[0]} alt="carousel-img" className='eventPageImage'/>
       ) : (
         <Carousel imageArray={event.file} />
       )}

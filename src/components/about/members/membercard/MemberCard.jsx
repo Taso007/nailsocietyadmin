@@ -6,6 +6,11 @@ import DeletePopUp from '../../../../reusable/delete/DeletePopUp';
 function MemberCard({ id, name_eng, name_geo, description_eng, description_geo, file, handleDelete }) {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
+  // doing it right now
+  // const goToEdit = () => {
+  //   window.location.href = `/members/${id}`; 
+  // }
+
   return (
     <div className='membercard-container'>
       <div className='membercard-content'>
@@ -21,6 +26,8 @@ function MemberCard({ id, name_eng, name_geo, description_eng, description_geo, 
          <div className='text-wrap text-break'>{description_eng}</div>
           <div className='text-wrap text-break'>{description_geo}</div>
         </div>
+        {/* doing the edit button right now
+        <button onClick={() => goToEdit()}>Edit</button> */}
         <button onClick={() => setIsPopupOpen(true)} className='membercardDelete-but'>
           Delete
         </button> 

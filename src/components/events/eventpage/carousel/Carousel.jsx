@@ -1,6 +1,6 @@
 import React from 'react';
 import './carousel.css'
-
+ 
 function Carousel({ imageArray }) {
   return (
     <div id="carouselExampleIndicators" className="carousel slide event-image grey-overlay card-img-overlay" data-bs-ride="carousel">
