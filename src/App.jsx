@@ -14,6 +14,7 @@ import MemberPage from './components/about/members/membercard/memberPage/MemberP
 import BlogEditPage from './components/blogs/blogpage/blogEditPage/BlogEditPage';
 import EventEditPage from './components/events/eventpage/eventEditPage/EventEditPage';
 import LeafletPage from './components/patients/leafletcard/leafletPage/LeafletPage';
+import StatutesPage from './components/about/statutes/statutescard/StatutesPage/StatutesPage';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
       <Route path="/blogs/:id/edit" element={<ProtectedRoute><BlogEditPage/></ProtectedRoute>} />
       <Route path="/events/:id/edit" element={<ProtectedRoute><EventEditPage/></ProtectedRoute>} />
       <Route path="/leaflets/:id/edit" element={<ProtectedRoute><LeafletPage/></ProtectedRoute>} />
+      <Route path="/statutes/:id/edit" element={<ProtectedRoute><StatutesPage/></ProtectedRoute>} />
     </Routes>
   );
 }
