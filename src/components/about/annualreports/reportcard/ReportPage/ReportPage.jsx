@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { db } from '../../../../../firebaseConfig';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
-import './statutespage.css';
+import './reportpage.css';
 import Navbar from '../../../../../Navbar';
 import { useFormSubmit } from '../../../../../reusable/useForm';
 import usePopup from '../../../../../reusable/usePopup';
@@ -10,38 +10,38 @@ import { useNavigate } from 'react-router-dom';
 import { storage } from '../../../../../firebaseConfig';
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";    
 
-function StatutesPage() {
+function ReportPage() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [statutes, setstatutes] = useState(null); 
-  const {handleChange} = usePopup(statutes, setstatutes);
+  const [report, setreport] = useState(null); 
+  const {handleChange} = usePopup(report, setreport);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
   
     try {
-      const statutesRef = doc(db, 'statutes', id);
-      const updatedData = { ...statutes };
+      const reportRef = doc(db, 'reports', id);
+      const updatedData = { ...report };
   
-      if (statutes.file_eng instanceof File) {
-        const fileEngRef = ref(storage, `reports/${statutes.file_eng.name}`);
-        await uploadBytes(fileEngRef, statutes.file_eng);
+      if (report.file_eng instanceof File) {
+        const fileEngRef = ref(storage, `reports/${report.file_eng.name}`);
+        await uploadBytes(fileEngRef, report.file_eng);
         const fileEngURL = await getDownloadURL(fileEngRef);
         updatedData.file_eng = fileEngURL;
       }
   
-      if (statutes.file_geo instanceof File) {
-        const fileGeoRef = ref(storage, `reports/${statutes.file_geo.name}`);
-        await uploadBytes(fileGeoRef, statutes.file_geo);
+      if (report.file_geo instanceof File) {
+        const fileGeoRef = ref(storage, `reports/${report.file_geo.name}`);
+        await uploadBytes(fileGeoRef, report.file_geo);
         const fileGeoURL = await getDownloadURL(fileGeoRef);
         updatedData.file_geo = fileGeoURL;
       }
   
-      await updateDoc(statutesRef, updatedData);
-      navigate('/statutes');
+      await updateDoc(reportRef, updatedData);
+      navigate('/annualReports');
     } catch (error) {
-      console.error("Error updating statutes: ", error);
-      alert("Failed to update statutes. Please try again.");
+      console.error("Error updating report: ", error);
+      alert("Failed to update report. Please try again.");
     }
   };
   
@@ -51,10 +51,10 @@ function StatutesPage() {
 
   useEffect(() => {
     const fetchEvent = async () => {
-      const docRef = doc(db, 'statutes', id);
+      const docRef = doc(db, 'reports', id);
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
-        setstatutes(docSnap.data());
+        setreport(docSnap.data());
       } else {
         console.log('No such document!');
       }
@@ -63,17 +63,17 @@ function StatutesPage() {
     fetchEvent();
   }, [id]);
 
-  if (!statutes) return <div>This statutes does not exist.</div>;
+  if (!report) return <div>This report does not exist.</div>;
 
-  const backTostatutes = () => {
-    navigate('/statutes');
+  const backToreport = () => {
+    navigate('/annualReports');
   }
 
   return (
     <div>
       <Navbar></Navbar>
-      <form onSubmit={handleFormSubmit} className='statutespage-container'>
-        <h1 className='text-wrap text-break'>Edit statutes</h1>
+      <form onSubmit={handleFormSubmit} className='reportpage-container'>
+        <h1 className='text-wrap text-break'>Edit report</h1>
         <h3 className='mt-3'>English</h3>
         <div>
           <label>File:</label>
@@ -93,7 +93,7 @@ function StatutesPage() {
               <input 
                 type="text" 
                 name="title_eng" 
-                value={statutes.title_eng} 
+                value={report.title_eng} 
                 onChange={handleChange} 
                 required 
                 className='addInput'
@@ -119,19 +119,19 @@ function StatutesPage() {
             <input 
               type="text" 
               name="title_geo" 
-              value={statutes.title_geo} 
+              value={report.title_geo} 
               onChange={handleChange} 
               required 
               className='addInput'
             />
           </div>
         </div>
-        <div className='statutespage-button-container'>
+        <div className='reportpage-button-container'>
           <div>
             <button type='submit' className='saveEdit-button' disabled={loading}>{loading ? "Updating..." : "Save"}</button>
           </div>
           <div>
-            <button className='cancelEdit-button' onClick={backTostatutes}>Cancel</button>
+            <button className='cancelEdit-button' onClick={backToreport}>Cancel</button>
           </div>
         </div>
       </form>
@@ -139,4 +139,4 @@ function StatutesPage() {
   )
 }
 
-export default StatutesPage;
+export default ReportPage;

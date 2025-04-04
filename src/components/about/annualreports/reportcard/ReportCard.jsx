@@ -1,9 +1,15 @@
 import React, {useState} from 'react';
 import './reportcard.css';
 import DeletePopUp from '../../../../reusable/delete/DeletePopUp';
+import { useNavigate } from 'react-router-dom';
  
 function ReportCard({ id, title_eng, title_geo, file_eng, file_geo, handleDelete }) {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const goToEdit = () => {
+    navigate(`/annualReports/${id}/edit`);
+  }
 
   return (
     <div className='reportcard-container'>
@@ -24,9 +30,12 @@ function ReportCard({ id, title_eng, title_geo, file_eng, file_geo, handleDelete
             <a href={file_geo} target="_blank" rel="noopener noreferrer">ნახე ფაილი</a>
           </div>
         </div>
-        <button onClick={() => setIsPopupOpen(true)} className='reportcardDelete-but'>
-          Delete
-        </button>
+        <div className='membercard-btns'>
+          <button onClick={() => goToEdit()} className='membercardCancel-but'>Edit</button>
+          <button onClick={() => setIsPopupOpen(true)} className='membercardDelete-but'>
+            Delete
+          </button>
+        </div>
       </div>
       {isPopupOpen && <DeletePopUp handleDelete={() => {handleDelete(id)}} onClose={() => setIsPopupOpen(false)} />}
     </div>
