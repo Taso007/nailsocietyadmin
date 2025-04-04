@@ -36,3 +36,22 @@
   border-radius: 50%;
   object-fit: cover;
 }
+
+.membercard-btns{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.membercardCancel-but{
+  border: none;
+  background-color: rgb(173, 170, 170);
+  color: white;
+  border-radius: 5px;
+}
+
+.membercardCancel-but:hover{
+  background-color: rgb(111, 111, 111);
+}

@@ -48,7 +48,7 @@ function EventsCard({ id, category, title_eng, title_geo, location_eng, location
       {isPopupOpen && <DeletePopUp handleDelete={() => {handleDelete(id)}} onClose={() => setIsPopupOpen(false)} />}
     </div>
   ); 
-}
+} 
 
 export default EventsCard;
  

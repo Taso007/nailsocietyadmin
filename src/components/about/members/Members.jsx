@@ -16,7 +16,7 @@ function Members() {
     description_eng: '',
     description_geo: '',
     file: null
-  });
+  }); 
 
   const [members, handleDelete] = useChange('members');
   const { isPopupOpen, handleAddItem, handleClosePopup, handleChange } = usePopup(formData, setFormData); 
