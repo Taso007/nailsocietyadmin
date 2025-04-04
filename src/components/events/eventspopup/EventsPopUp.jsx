@@ -81,7 +81,6 @@ function EventsPopUp({ formData, handleChange, handleSubmit, handleClosePopup })
               />
             </div>
           </div>
-
           <div>
             <label>Description:</label>
             <div>

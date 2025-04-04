@@ -1,0 +1,81 @@
+.eventpage-container {
+  margin: 30px;
+  max-width: 1500px;
+  padding: 20px;
+}
+
+.saveEdit-button{
+  width: 300px;
+  height: 40px;
+  margin-top: 15px;
+  border: none;
+  background-color: rgb(47, 146, 47);
+  color: white;
+  border-radius: 10px;
+}
+ 
+.cancelEdit-button{
+  width: 300px;
+  height: 40px;
+  margin-top: 15px;
+  border: none;
+  background-color: rgb(170, 170, 170);
+  color: white;
+  border-radius: 10px;
+}
+
+.saveEdit-button:hover{
+  background-color: rgb(36, 124, 36);
+}
+
+.cancelEdit-button:hover{
+  background-color: rgb(112, 112, 112);
+}
+ 
+.auto-height {
+  resize: none;
+  min-height: 3rem; 
+  width: 100%;
+  height: 250px
+}
+
+.eventpage-img-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.eventpage-img {
+  height: 150px;
+  border-radius: 10px;
+}
+
+.eventpage-img-input {
+  margin-top: 30px;
+}
+
+.eventpage-multiple-img {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap ;
+  align-items: center;
+  gap: 20px;
+}
+
+.eventpage-img-withdelete{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: black 1px solid;
+  padding: 10px;
+}
+
+.eventpage-button-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: 30px;
+  gap: 30px;
+}

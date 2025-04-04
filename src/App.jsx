@@ -12,6 +12,7 @@ import LogIn from './components/login/LogIn';
 import ProtectedRoute from './security/ProtectedRoute';
 import MemberPage from './components/about/members/membercard/memberPage/MemberPage';
 import BlogEditPage from './components/blogs/blogpage/blogEditPage/BlogEditPage';
+import EventEditPage from './components/events/eventpage/eventEditPage/EventEditPage';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
       <Route path="/blog/:id" element={<ProtectedRoute><BlogPage /></ProtectedRoute>} />
       <Route path="/member/:id" element={<ProtectedRoute><MemberPage /></ProtectedRoute>} />
       <Route path="/blogs/:id/edit" element={<ProtectedRoute><BlogEditPage/></ProtectedRoute>} />
+      <Route path="/events/:id/edit" element={<ProtectedRoute><EventEditPage/></ProtectedRoute>} />
     </Routes>
   );
 }
