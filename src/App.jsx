@@ -11,6 +11,7 @@ import BlogPage from './components/blogs/blogpage/BlogPage';
 import LogIn from './components/login/LogIn';
 import ProtectedRoute from './security/ProtectedRoute';
 import MemberPage from './components/about/members/membercard/memberPage/MemberPage';
+import BlogEditPage from './components/blogs/blogpage/blogEditPage/BlogEditPage';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
       <Route path="/event/:id" element={<ProtectedRoute><EventPage /></ProtectedRoute>} />
       <Route path="/blog/:id" element={<ProtectedRoute><BlogPage /></ProtectedRoute>} />
       <Route path="/member/:id" element={<ProtectedRoute><MemberPage /></ProtectedRoute>} />
+      <Route path="/blogs/:id/edit" element={<ProtectedRoute><BlogEditPage/></ProtectedRoute>} />
     </Routes>
   );
 }

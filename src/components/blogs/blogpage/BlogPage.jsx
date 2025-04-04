@@ -4,11 +4,17 @@ import { db } from '../../../firebaseConfig';
 import { doc, getDoc } from 'firebase/firestore';
 import './blogpage.css';
 import Navbar from '../../../Navbar';
+import { useNavigate } from 'react-router-dom';
 
 
 function BlogPage() {
   const { id } = useParams();
   const [blog, setblog] = useState(null);
+  const navigate = useNavigate();
+
+  const navigateToEditPage = () => {
+    navigate(`/blogs/${id}/edit`);
+  }
 
   useEffect(() => {
     const fetchblog = async () => {
@@ -29,27 +35,34 @@ function BlogPage() {
   return (
     <>
     <Navbar></Navbar>
-    <div className='blog-page'>
-     <div className='blog-info'>
-      <h1>
-        <div className='text-wrap text-break'>{blog.title_eng}</div>
-      </h1>
-      <div className='blog-description'>
-        <p className='text-wrap text-break'>{blog.description_eng}</p>
+    <div className='blog-page-container'>
+      <div className='blog-page'>
+      <div className='blog-info'>
+        <h1>
+          <div className='text-wrap text-break'>{blog.title_eng}</div>
+        </h1>
+        <div className='blog-description'>
+          <p className='text-wrap text-break'>{blog.description_eng}</p>
+        </div>
+      </div>
+      <div className='blog-info'>
+        <h1>
+          <div className='text-wrap text-break'>{blog.title_geo}</div>
+        </h1>
+        <div className='blog-description'>
+          <p className='text-wrap text-break'>{blog.description_geo}</p>
+        </div>
+      </div>
+      <div className='blog-header'>
+        <img src={blog.file} alt={blog.title} className='blog-image' />
+      </div>
+      </div> 
+      <div>
+        <button className='blog-edit-button' onClick={navigateToEditPage}>
+          Edit
+        </button>
       </div>
     </div>
-    <div className='blog-info'>
-      <h1>
-        <div className='text-wrap text-break'>{blog.title_geo}</div>
-      </h1>
-      <div className='blog-description'>
-        <p className='text-wrap text-break'>{blog.description_geo}</p>
-      </div>
-    </div>
-    <div className='blog-header'>
-      <img src={blog.file} alt={blog.title} className='blog-image' />
-    </div>
-    </div> 
     </>
   );
 }

@@ -1,41 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { db } from '../../../../../firebaseConfig';
+import { db } from '../../../../firebaseConfig';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
-import './memberpage.css';
-import Navbar from '../../../../../Navbar';
-import { useFormSubmit } from '../../../../../reusable/useForm';
-import usePopup from '../../../../../reusable/usePopup';
+import './blogeditpage.css';
+import Navbar from '../../../../Navbar';
+import { useFormSubmit } from '../../../../reusable/useForm';
+import usePopup from '../../../../reusable/usePopup';
 import { useNavigate } from 'react-router-dom';
-import { storage } from '../../../../../firebaseConfig';
+import { storage } from '../../../../firebaseConfig';
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";    
 
-function MemberPage() {
+function BlogEditPage() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [member, setMember] = useState(null); 
-  const {handleChange} = usePopup(member, setMember);
+  const [blog, setblog] = useState(null); 
+  const {handleChange} = usePopup(blog, setblog);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
   
     try {
-      const memberRef = doc(db, 'members', id);
-      const updatedData = { ...member };
+      const blogRef = doc(db, 'blogs', id);
+      const updatedData = { ...blog };
   
-      if (member.file instanceof File || (member.file && member.file.length > 0 && member.file[0] instanceof File)) {
-        const file = member.file[0] || member.file; 
-        const storageRef = ref(storage, `members/${file.name}`);
+      if (blog.file instanceof File || (blog.file && blog.file.length > 0 && blog.file[0] instanceof File)) {
+        const file = blog.file[0] || blog.file; 
+        const storageRef = ref(storage, `blogs/${file.name}`);
         await uploadBytes(storageRef, file);
         const downloadURL = await getDownloadURL(storageRef);
         updatedData.file = downloadURL;
       }
   
-      await updateDoc(memberRef, updatedData);
-      navigate('/members');
+      await updateDoc(blogRef, updatedData);
+      navigate('/blogs');
     } catch (error) {
-      console.error("Error updating member: ", error);
-      alert("Failed to update member. Please try again.");
+      console.error("Error updating blog: ", error);
+      alert("Failed to update blog. Please try again.");
     }
   };
 
@@ -44,10 +44,10 @@ function MemberPage() {
 
   useEffect(() => {
     const fetchEvent = async () => {
-      const docRef = doc(db, 'members', id);
+      const docRef = doc(db, 'blogs', id);
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
-        setMember(docSnap.data());
+        setblog(docSnap.data());
       } else {
         console.log('No such document!');
       }
@@ -56,26 +56,26 @@ function MemberPage() {
     fetchEvent();
   }, [id]);
 
-  if (!member) return <div>This member does not exist.</div>;
+  if (!blog) return <div>This blog does not exist.</div>;
 
-  const backToMembers = () => {
-    navigate('/members');
+  const backToblogs = () => {
+    navigate('/blogs');
   }
 
   return (
     <div>
       <Navbar></Navbar>
-      <form onSubmit={handleFormSubmit} className='memberpage-container'>
-        <h1 className='text-wrap text-break'>Edit Member</h1>
+      <form onSubmit={handleFormSubmit} className='blogpage-container'>
+        <h1 className='text-wrap text-break'>Edit blog</h1>
         <div>
           <div>
-            <label>Profile Picture / პროფილის სურათი:</label>
+           <label>Image / სურათი:</label>
           </div>
-          <div className='memberpage-img-container'>
+          <div className='blogpage-img-container'>
             <div >
-              <img src={member.file} className='memberpage-img'></img>
+              <img src={blog.file} className='blogpage-img'></img>
             </div>
-            <div className='memberpage-img-input'>
+            <div className='blogpage-img-input'>
               <input
                 type="file" 
                 name="file" 
@@ -88,12 +88,12 @@ function MemberPage() {
         </div>
         <h3 className='mt-3'>English</h3>
         <div> 
-          <label>Name: </label>
+          <label>Title: </label>
           <div>
             <input 
               type="text" 
-              name="name_eng" 
-              value={member.name_eng} 
+              name="title_eng" 
+              value={blog.title_eng} 
               onChange={handleChange}
               required 
               className='addInput'
@@ -106,7 +106,7 @@ function MemberPage() {
             <textarea 
               type="text" 
               name="description_eng" 
-              value={member.description_eng} 
+              value={blog.description_eng} 
               onChange={handleChange} 
               required 
               className='addInput auto-height text-wrap text-break'
@@ -115,12 +115,12 @@ function MemberPage() {
         </div>
         <h3 className='mt-3'>ქართული</h3>
         <div> 
-          <label>სახელი:</label> 
+          <label>სათაური:</label>
           <div>
             <input 
               type="text" 
-              name="name_geo" 
-              value={member.name_geo} 
+              name="title_geo" 
+              value={blog.title_geo} 
               onChange={handleChange}
               required 
               className='addInput'
@@ -133,19 +133,19 @@ function MemberPage() {
             <textarea   
               type="text" 
               name="description_geo" 
-              value={member.description_geo} 
+              value={blog.description_geo} 
               onChange={handleChange}
               required 
               className='addInput auto-height text-wrap text-break'
             />
           </div>
         </div>
-        <div className='memberpage-button-container'>
+        <div className='blogpage-button-container'>
           <div>
             <button type='submit' className='saveEdit-button' disabled={loading}>{loading ? "Updating..." : "Save"}</button>
           </div>
           <div>
-            <button className='cancelEdit-button' onClick={backToMembers}>Cancel</button>
+            <button className='cancelEdit-button' onClick={backToblogs}>Cancel</button>
           </div>
         </div>
       </form>
@@ -153,4 +153,4 @@ function MemberPage() {
   )
 }
 
-export default MemberPage;
+export default BlogEditPage;

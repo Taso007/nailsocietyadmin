@@ -1,4 +1,4 @@
-.memberpage-container {
+.blogpage-container {
   margin: 30px;
   max-width: 1500px;
   padding: 20px;
@@ -32,7 +32,6 @@
   background-color: rgb(112, 112, 112);
 }
  
-
 .auto-height {
   resize: none;
   min-height: 3rem; 
@@ -40,22 +39,22 @@
   height: 250px
 }
 
-.memberpage-img-container{
+.blogpage-img-container{
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.memberpage-img {
+.blogpage-img {
   height: 150px;
   border-radius: 10px;
 }
 
-.memberpage-img-input {
+.blogpage-img-input {
   margin-left: 30px;
 }
 
-.memberpage-button-container {
+.blogpage-button-container {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
