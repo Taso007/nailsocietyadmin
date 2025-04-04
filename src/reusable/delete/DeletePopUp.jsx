@@ -1,5 +1,5 @@
 import React from "react";
-import "./deletePopup.css";
+import "./deletePopUp.css";
 
 function DeletePopUp({ handleDelete, onClose }) {
   return (
