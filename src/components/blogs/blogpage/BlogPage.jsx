@@ -5,6 +5,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import './blogpage.css';
 import Navbar from '../../../Navbar';
 import { useNavigate } from 'react-router-dom';
+import { renderDescription } from '../../../reusable/utils';
 
 
 function BlogPage() {
@@ -42,7 +43,7 @@ function BlogPage() {
           <div className='text-wrap text-break'>{blog.title_eng}</div>
         </h1>
         <div className='blog-description'>
-          <p className='text-wrap text-break'>{blog.description_eng}</p>
+          <p className='text-wrap text-break'>{renderDescription(blog.description_eng)}</p>
         </div>
       </div>
       <div className='blog-info'>
@@ -50,7 +51,7 @@ function BlogPage() {
           <div className='text-wrap text-break'>{blog.title_geo}</div>
         </h1>
         <div className='blog-description'>
-          <p className='text-wrap text-break'>{blog.description_geo}</p>
+          <p className='text-wrap text-break'>{renderDescription(blog.description_geo)}</p>
         </div>
       </div>
       <div className='blog-header'>

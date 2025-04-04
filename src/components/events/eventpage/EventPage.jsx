@@ -6,6 +6,7 @@ import './eventpage.css';
 import Navbar from '../../../Navbar';
 import Carousel from './carousel/Carousel';
 import { useNavigate } from 'react-router-dom';
+import { renderDescription } from '../../../reusable/utils';
 
 function EventPage() {
   const { id } = useParams();
@@ -42,7 +43,7 @@ function EventPage() {
         <p className='event-location text-wrap text-break'>{event.location_eng}</p>
         <p className='event-date text-wrap text-break'>{event.date}</p>
         <div className='event-description text-break text-wrap'>
-          <p className='text-wrap text-break'>{event.description_eng}</p>
+          <p className='text-wrap text-break'>{renderDescription(event.description_eng)}</p>
         </div>
       </div>
       <div className='event-info'>
@@ -50,7 +51,7 @@ function EventPage() {
         <p className='event-location text-wrap text-break'>{event.location_geo}</p>
         <p className='event-date text-wrap text-break'>{event.date}</p>
         <div className='event-description text-break text-wrap'>
-          <p className='text-wrap text-break'>{event.description_geo}</p>
+          <p className='text-wrap text-break'>{renderDescription(event.description_geo)}</p>
         </div>
       </div>
       <div className='event-header'>

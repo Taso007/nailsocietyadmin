@@ -5,4 +5,10 @@ const getFirstNCharacters = (text, maxLength) => {
   return text; 
 }; 
 
-export { getFirstNCharacters} 
+const renderDescription = (text) => {
+  return text.split('\n').map((line, index) => (
+    <span key={index}>{line}<br /></span>
+  ));
+};
+
+export { getFirstNCharacters, renderDescription} 
