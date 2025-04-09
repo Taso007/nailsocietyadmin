@@ -15,11 +15,11 @@ function BlogsCard({ id, title_eng, title_geo, file, description_eng, descriptio
   return (
     <div className='blogscard-container'>
       <div className='blogscard-content'>
-        <h4 style={{height: '65px'}}>
+        <h5 style={{height: '90px'}}>
           <div className='text-wrap text-break'>{title_eng}</div>
           <div className='text-wrap text-break'>{title_geo}</div>
-        </h4>
-        <div style={{height: '260px'}}>
+        </h5>
+        <div style={{height: '240px'}}>
           <div className='text-wrap text-break'>{getFirstNCharacters(description_eng, 170)}</div>
           <div className='text-wrap text-break'>{getFirstNCharacters(description_geo, 170)}</div>
         </div>
