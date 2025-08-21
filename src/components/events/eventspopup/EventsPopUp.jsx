@@ -28,7 +28,7 @@ function EventsPopUp({ formData, handleChange, handleSubmit, handleClosePopup })
           </div>
           </div>
           <div>
-            <label>Image / სურათი:</label> 
+            <label>Images / სურათები <span></span>:</label> 
             <div>
             <input 
               type="file" 
