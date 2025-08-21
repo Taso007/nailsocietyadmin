@@ -39,6 +39,19 @@ function BlogsPopUp({ formData, handleChange, handleSubmit, handleClosePopup }) 
             </div>
           </div>
           <div>
+            <label>File: </label>
+            <div>
+            <input 
+              type="file" 
+              name="file_eng" 
+              onChange={handleChange} 
+              accept="application/pdf" 
+              required
+              className='addInput fileInput'
+            /> 
+            </div>
+          </div>
+          <div>
             <label>Description:</label>
             <div>
               <textarea
@@ -61,6 +74,19 @@ function BlogsPopUp({ formData, handleChange, handleSubmit, handleClosePopup }) 
                 required 
                 className='addInput'
               />
+            </div>
+          </div>
+          <div>
+            <label>ფაილი: </label>
+            <div>
+            <input 
+              type="file" 
+              name="file_geo" 
+              onChange={handleChange} 
+              accept="application/pdf"
+              required 
+              className='addInput fileInput'
+            /> 
             </div>
           </div>
           <div>

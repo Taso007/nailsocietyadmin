@@ -9,7 +9,7 @@ import usePopup from '../../../../reusable/usePopup';
 import { useNavigate } from 'react-router-dom';
 import { storage } from '../../../../firebaseConfig';
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";    
-
+ 
 function BlogEditPage() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -29,6 +29,18 @@ function BlogEditPage() {
         await uploadBytes(storageRef, file);
         const downloadURL = await getDownloadURL(storageRef);
         updatedData.file = downloadURL;
+      }
+      if (blog.file_eng instanceof File) {
+        const fileEngRef = ref(storage, `blogs/${blog.file_eng.name}`);
+        await uploadBytes(fileEngRef, blog.file_eng);
+        const fileEngURL = await getDownloadURL(fileEngRef);
+        updatedData.file_eng = fileEngURL;
+      }
+      if (blog.file_geo instanceof File) {
+        const fileGeoRef = ref(storage, `blogs/${blog.file_geo.name}`);
+        await uploadBytes(fileGeoRef, blog.file_geo);
+        const fileGeoURL = await getDownloadURL(fileGeoRef);
+        updatedData.file_geo = fileGeoURL;
       }
   
       await updateDoc(blogRef, updatedData);
@@ -101,6 +113,19 @@ function BlogEditPage() {
           </div>
         </div>
         <div>
+            <label>File: </label>
+            <div>
+            <input 
+              type="file" 
+              name="file_eng" 
+              onChange={handleChange} 
+              accept="application/pdf" 
+              required
+              className='addInput fileInput'
+            /> 
+            </div>
+          </div>
+        <div>
           <label>Description: </label>
           <div>
             <textarea 
@@ -127,6 +152,19 @@ function BlogEditPage() {
             />
           </div>
         </div>
+        <div>
+            <label>ფაილი: </label>
+            <div>
+            <input 
+              type="file" 
+              name="file_geo" 
+              onChange={handleChange} 
+              accept="application/pdf"
+              required 
+              className='addInput fileInput'
+            /> 
+            </div>
+          </div>
         <div>
           <label>დახასიათება:</label>
           <div>

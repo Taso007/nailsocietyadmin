@@ -14,6 +14,8 @@ function ScientificBlogs() {
     file: null,
     title_eng: '',
     title_geo: '',
+    file_eng: null,
+    file_geo: null,
     description_eng: '',
     description_geo: ''
   });
@@ -26,15 +28,24 @@ function ScientificBlogs() {
 
     try {
       const storageRef = ref(storage, `blogs/${formData.file.name}`);
+      const fileEngRef = ref(storage, `blogs/${formData.file_eng.name}`);
+      const fileGeoRef = ref(storage, `blogs/${formData.file_geo.name}`);
       
       await uploadBytes(storageRef, formData.file);
-      
       const fileURL = await getDownloadURL(storageRef);
+
+      await uploadBytes(fileEngRef, formData.file_eng);
+      const fileEngURL = await getDownloadURL(fileEngRef);
+      
+      await uploadBytes(fileGeoRef, formData.file_geo);
+      const fileGeoURL = await getDownloadURL(fileGeoRef);
 
       await addDoc(collection(db, 'blogs'), {
         file: fileURL,
         title_eng: formData.title_eng,
         title_geo: formData.title_geo,
+        file_eng: fileEngURL,
+        file_geo: fileGeoURL,
         description_eng: formData.description_eng,
         description_geo: formData.description_geo,
         createdAt: new Date()
@@ -45,6 +56,8 @@ function ScientificBlogs() {
         file: null,
         title_eng: '',
         title_geo: '',
+        file_eng: null,
+        file_geo: null,
         description_eng: '',
         description_geo: ''
       });

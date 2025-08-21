@@ -6,7 +6,7 @@ import './blogpage.css';
 import Navbar from '../../../Navbar';
 import { useNavigate } from 'react-router-dom';
 import { renderDescription } from '../../../reusable/utils';
-
+ 
 
 function BlogPage() {
   const { id } = useParams();
@@ -42,6 +42,9 @@ function BlogPage() {
         <h1>
           <div className='text-wrap text-break'>{blog.title_eng}</div>
         </h1>
+        <div>
+          <a href={blog.file_eng} target="_blank" rel="noopener noreferrer">View File</a>
+        </div>
         <div className='blog-description'>
           <p className='text-wrap text-break'>{renderDescription(blog.description_eng)}</p>
         </div>
@@ -50,6 +53,9 @@ function BlogPage() {
         <h1>
           <div className='text-wrap text-break'>{blog.title_geo}</div>
         </h1>
+        <div>
+          <a href={blog.file_geo} target="_blank" rel="noopener noreferrer">ნახე ფაილი</a>
+        </div>
         <div className='blog-description'>
           <p className='text-wrap text-break'>{renderDescription(blog.description_geo)}</p>
         </div>
